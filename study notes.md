@@ -1,15 +1,18 @@
 ### kubectl Commands
 
-- `kubectl version`: check if kubectl is installed. It prints the version of the client as well as the server.
-- `kubectl cluster-info`: shows cluster details
-- `kubectl get nodes`: view the nodes in the cluster. Shows all nodes that can be used to host our applications.
+Manipulating Objects
+- `kubectl create -f <file>.yaml`: create a Kubernetes Object with a .yaml file
 - `kubectl create deployment <name the deployment> <image address>`: create a Deployment that manages a Pod. The Pod runs a Container based on the provided Docker image. Example: `kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4`
-- `kubectl apply -f <file name>.yaml`: Create pods with .yaml files
-- `kubectl get deployments`: shows deployments with some details.
-- `kubectl get pods`: shows pods with some details
+- `kubectl apply -f <file name>.yaml`: create pods with .yaml files
+- `kubectl delete <object type: service / deployment / pod> <object name>`: delete the specified object, e.g. `kubectl delete deployment depl.yaml`
+
+Requesting Info
+- `kubectl get <object type: nodes / pods / deployments / services>`: shows the specified object with some details.
+- `kubectl version`: check if kubectl is installed. It prints the version of the client as well as the server.
 - `kubectl get events`: view cluster events
 - `kubectl config view`: view the kubectl configuration:
 - `kubectl describe pods`: shows details about the Pod’s container: IP address, the ports used and a list of events related to the lifecycle of the Pod
+- `kubectl cluster-info`: shows cluster details
 
 ### Containers, Pods & Nodes
 When you create a Deployment, Kubernetes creates a Pod to host your application instance. 
