@@ -23,7 +23,6 @@ Get a good grip on the concepts of:
 - [deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) ("Creating a Deployment")
 - [services](https://kubernetes.io/docs/concepts/services-networking/service/) (up to "Services without selectors")
 
-
 Play around with Kubernetes in a controlled environment
 - [**interactive tutorial: Hello Minikube**](https://kubernetes.io/docs/tutorials/hello-minikube/)
 - [**interactive tutorial: Learn Kubernetes Basics**](https://kubernetes.io/docs/tutorials/kubernetes-basics/) (Modules 1 through 4)
