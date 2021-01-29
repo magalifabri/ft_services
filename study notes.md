@@ -16,6 +16,7 @@ Manipulating Objects
 - `kubectl create deployment <name the deployment> <image address>`: create a Deployment that manages a Pod. The Pod runs a Container based on the provided Docker image. Example: `kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4`
 - `kubectl apply -f <file name>.yaml`: apply updates to existing definitions
 - `kubectl delete <object type: service / deployment / pod> <object name>`: delete the specified object, e.g. `kubectl delete deployment depl.yaml`
+- `kubectl exec -it <full object name> -- bin/bash`: open a terminal in the pod
 
 Requesting Info
 - `kubectl version`: check if kubectl is installed. It prints the version of the client as well as the server.
