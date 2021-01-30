@@ -6,10 +6,14 @@
 eval $(minikube -p minikube docker-env)
 
 # build an image that runs nginx
-docker build ./nginx -t nginx_img
+docker build ./srcs/nginx -t nginx_img
+# docker build ./srcs/mysql -t mysql_img
+# docker build ./srcs/phpmyadmin -t pma_img
 
 # create a deployment and a service in minikube from the nginx image
-kubectl create -f ./nginx/nginx.yaml
+kubectl create -f ./srcs/nginx/nginx.yaml
+# kubectl apply -f ./srcs/mysql/mysql.yaml 
+# kubectl apply -f ./srcs/phpmyadmin/pma.yaml 
 
 # have minikube expose the service locally
 minikube service nginx-service
