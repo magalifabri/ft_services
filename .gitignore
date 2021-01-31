@@ -2,8 +2,9 @@
 *.swp
 *.pdf
 practice
-README.md
 study notes.md
 srcs/mysql
 srcs/phpmyadmin
+setup-metallb.sh
+setup-wp.sh
 # srcs/wordpress
