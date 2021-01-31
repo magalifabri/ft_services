@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-deployment
+  labels:
+    app: wp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wp
+  template:
+    metadata:
+      labels:
+        app: wp
+    spec:
+      containers:
+      - name: wp
+        image: wp_img
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-service
+spec:
+  selector:
+    app: wp
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5050
+      targetPort: 80
