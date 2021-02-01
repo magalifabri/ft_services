@@ -14,3 +14,11 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [metallb.universe.tf: Configuration](https://metallb.universe.tf/configuration/)
 
 - [installing MySQL on Alpine](https://wiki.alpinelinux.org/wiki/Mysql)
+
+## STATE OF PROGRESSION
+- wordpress: 
+	- pod is running
+	- When viewed in the browser, shows: "Error establishing a database connection"
+- mysql:
+	- pod is running
+	- mysql seems to be running in the pod
