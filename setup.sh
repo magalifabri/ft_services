@@ -9,7 +9,7 @@ eval $(minikube -p minikube docker-env)
 docker build ./srcs/nginx -t nginx_img
 docker build ./srcs/wordpress -t wp_img
 docker build ./srcs/mysql -t mysql_img
-# docker build ./srcs/phpmyadmin -t pma_img
+docker build ./srcs/phpmyadmin -t pma_img
 
 # set up metalLB
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
@@ -25,6 +25,6 @@ kubectl apply -f metallbConfig.yaml
 kubectl apply -f ./srcs/nginx/nginx.yaml
 kubectl apply -f ./srcs/wordpress/wp.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml 
-# kubectl apply -f ./srcs/phpmyadmin/pma.yaml 
+kubectl apply -f ./srcs/phpmyadmin/pma.yaml 
 
 # view a specific service in the browser with the `minikube service <service name>` command or run `minikube tunnel` in a seperate shell window to access the external IPs given by MetalLB from the browser.

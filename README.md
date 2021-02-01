@@ -13,12 +13,21 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [metallb.universe.tf: Installation](https://metallb.universe.tf/installation/)
 	- [metallb.universe.tf: Configuration](https://metallb.universe.tf/configuration/)
 
-- [installing MySQL on Alpine](https://wiki.alpinelinux.org/wiki/Mysql)
+- MySQL
+	- [MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
+	- [installing MySQL on Alpine](https://wiki.alpinelinux.org/wiki/Mysql)
+	- [[HELP] Created a container from alpine, installed MariaDB. MariaDB won't start.](https://www.reddit.com/r/docker/comments/3ucc8y/help_created_a_container_from_alpine_installed/)
+	- [Could not open mysql.plugin table. Some plugins may be not loaded](https://stackoverflow.com/questions/34198735/could-not-open-mysql-plugin-table-some-plugins-may-be-not-loaded)
 
 ## STATE OF PROGRESSION
 - wordpress: 
 	- pod is running
-	- When viewed in the browser, shows: "Error establishing a database connection"
+	- external visibility depends on "php -S"; don't know if that's a good solution
+	- not connected to the mysql database yet, so when when viewed in the browser, shows: "Error establishing a database connection"
 - mysql:
 	- pod is running
 	- mysql seems to be running in the pod
+- phpmyadmin:
+	- pod is running
+	- external visibility depends on "php -S"; don't know if that's a good solution
+	- can't log in yet: not connected to the mysql database

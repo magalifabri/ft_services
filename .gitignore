@@ -3,7 +3,5 @@
 *.pdf
 practice
 study notes.md
-srcs/phpmyadmin
 setup-metallb.sh
 setup-wp.sh
-# srcs/wordpress
