@@ -9,7 +9,7 @@ $cfg['TempDir'] = '/tmp';
  */
 
 /* User used to manipulate with storage */
-$cfg['Servers'][$i]['controlhost'] = 'localhost';
+// $cfg['Servers'][$i]['controlhost'] = 'localhost';
 // $cfg['Servers'][$i]['controlport'] = '';
 $cfg['Servers'][$i]['controluser'] = 'user';
 $cfg['Servers'][$i]['controlpass'] = 'pass';

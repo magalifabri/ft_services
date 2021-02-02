@@ -26,7 +26,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- not connected to the mysql database yet, so when when viewed in the browser, shows: "Error establishing a database connection"
 - mysql:
 	- pod is running
-	- mysql seems to be running in the pod
+	- mysql seems to be running
 - phpmyadmin:
 	- pod is running
 	- external visibility depends on "php -S"; don't know if that's a good solution

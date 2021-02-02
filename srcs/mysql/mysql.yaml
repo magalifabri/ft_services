@@ -19,7 +19,7 @@ spec:
         image: mysql_img
         imagePullPolicy: Never
         ports:
-        - containerPort: 90
+        - containerPort: 3306
 ---
 apiVersion: v1
 kind: Service
@@ -30,5 +30,5 @@ spec:
     app: mysql
   ports:
     - protocol: TCP
-      port: 90
-      targetPort: 90
+      port: 3306
+      targetPort: 3306
