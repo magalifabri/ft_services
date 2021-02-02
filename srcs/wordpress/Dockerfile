@@ -1,6 +1,13 @@
 FROM alpine:3.12.0
 
-RUN apk update && apk add vim php7 php7-fpm php7-mysqli
+RUN apk update && apk add \
+    vim \
+    php \
+    php-fpm \
+    php-mysqli \
+    php-mbstring \ 
+    php-json \
+    php-session
 
 RUN mkdir -p /var/www/html/wp
 
