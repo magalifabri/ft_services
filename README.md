@@ -23,11 +23,26 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/#set-database-host)
 	- [Debugging in WordPress](https://wordpress.org/support/article/debugging-in-wordpress/)
 
+- phpMyAdmin
+	- [error mysqli::real_connect(): (HY000/2002): No such file or directory](https://stackoverflow.com/questions/29928109/getting-error-mysqlireal-connect-hy000-2002-no-such-file-or-directory-wh)
+	- [Configuration](https://docs.phpmyadmin.net/en/latest/config.html)
+
+- NGINX
+	- [Redirect HTTP to HTTPS in Nginx](https://linuxize.com/post/redirect-http-to-https-in-nginx/#:~:text=The%20preferred%20method%20to%20redirect,unpredictable%20behavior%20of%20the%20server.)
+	- [Creating NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
+	- [Beginner’s Guide](http://nginx.org/en/docs/beginners_guide.html)
+	- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+
 ## STATE OF PROGRESSION
 - nginx:
 	- pod is running
 	- both port 80 and 443 load in the browser
 	- ssl seems to work
+	- √ A container with an nginx server listening on ports 80 and 443.
+	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
+	- The page displayed does not matter as long as it is not an http error.
+	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
+	- It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
 - mysql:
 	- pod is running
 	- mysql seems to be running
@@ -38,4 +53,4 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 - phpmyadmin:
 	- pod is running
 	- loads in the browser (depends on "php -S"; don't know if that's a good solution)
-	- can't log in yet: doesn't seem properly connected to the mysql database
+	- seems functional

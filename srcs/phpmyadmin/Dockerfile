@@ -1,6 +1,7 @@
 FROM alpine:3.12.0
 
-RUN apk update && apk add vim \
+RUN apk update && apk add \
+    vim \
     php \
     php-fpm \
     php-mysqli \

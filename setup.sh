@@ -19,7 +19,7 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manife
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
 # create the MetalLB ConfigMap
-kubectl apply -f metallbConfig.yaml
+kubectl apply -f ./srcs/metallbConfig.yaml
 
 # create the rest of the deployments and services
 kubectl apply -f ./srcs/nginx/nginx.yaml
