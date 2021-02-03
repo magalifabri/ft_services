@@ -9,10 +9,10 @@ mysql_install_db
 # replace the current my.cnf file with my own, setting MySQL's port to 3306
 mv my.cnf /etc/
 
-# start mysql
+# start MySQL
 mysqld -u root --datadir=/data & sleep 5
 
-# create some stuff in the mysql database
+# create the WordPress and phpMyAdmin databases and fill the phpMyAdmin database with the necessary tables
 mysql < mysql_setup.sql
 
 # keep a process running so the pod keeps running

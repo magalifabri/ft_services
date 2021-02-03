@@ -12,6 +12,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [MetalLB Configuration in Minikube — To enable Kubernetes service of type “LoadBalancer”](https://medium.com/faun/metallb-configuration-in-minikube-to-enable-kubernetes-service-of-type-loadbalancer-9559739787df)
 	- [metallb.universe.tf: Installation](https://metallb.universe.tf/installation/)
 	- [metallb.universe.tf: Configuration](https://metallb.universe.tf/configuration/)
+	- [IP Address Sharing](https://metallb.universe.tf/usage/#ip-address-sharing)
 
 - MySQL
 	- [MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
@@ -40,17 +41,36 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- ssl seems to work
 	- √ A container with an nginx server listening on ports 80 and 443.
 	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
-	- The page displayed does not matter as long as it is not an http error.
+	- x The page displayed does not matter as long as it is not an http error.
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
-	- It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
+	- ~ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
+		- logging in via proxy gives 404
+
 - mysql:
 	- pod is running
 	- mysql seems to be running
+
 - wordpress:
 	- pod is running
 	- loads in the browser (depends on "php -S"; don't know if that's a good solution)
 	- seems functional (need to verify database use with phpmyadmin once that is up and running)
+	- √ listening on port 5050
+	- √ work with a MySQL database
+	- √ Both services (wordpress & mysql) have to run in separate containers)
+	- x The WordPress website will have several users and an administrator
+	- x Wordpress needs its own nginx server
+	- √ The Load Balancer should be able to redirect directly to this service.
+
 - phpmyadmin:
 	- pod is running
 	- loads in the browser (depends on "php -S"; don't know if that's a good solution)
 	- seems functional
+	- √ listening on port 5000
+	- √ linked with the MySQL database
+	- x its own nginx server
+	- √ The Load Balancer should be able to redirect directly to this service.
+
+- MetalLB (load balancer):
+	- √? The Load Balancerwhich manages the external access of your services. It will be the only entry point to your cluster.
+	- √ (so far) You must keep the ports associated with the service (IP:3000 for Grafana etc).
+	- √ Load Balancer will have a single ip
