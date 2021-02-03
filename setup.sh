@@ -12,13 +12,7 @@ docker build ./srcs/mysql -t mysql_img
 docker build ./srcs/phpmyadmin -t pma_img
 
 # set up metalLB
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
-
-# "The memberlist secret contains the secretkey to encrypt the communication between speakers for the fast dead node detection."" - https://metallb.universe.tf/installation/
-kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-
-# create the MetalLB ConfigMap
+minikube addons enable metallb
 kubectl apply -f ./srcs/metallbConfig.yaml
 
 # create the rest of the deployments and services
