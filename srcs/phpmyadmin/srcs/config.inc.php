@@ -17,6 +17,7 @@ $cfg['Servers'][$i]['controluser'] = 'user';
 $cfg['Servers'][$i]['controlpass'] = 'pass';
 
 /* Storage database and tables */
+$cfg['PmaAbsoluteUri'] = './';
 $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
 $cfg['Servers'][$i]['bookmarktable'] = 'pma__bookmark';
 $cfg['Servers'][$i]['relation'] = 'pma__relation';
