@@ -53,8 +53,8 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
 	- √ The page displayed does not matter as long as it is not an http error.
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
-	- ~ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
-		- logging in/out via proxy gives 404
+	- √ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
+	- ? You must be able to access the nginx container by logging into SSH.
 
 - mysql
 	- √ Of type ClusterIP
@@ -91,6 +91,8 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	
 - Influxd:
 	- √ Of type ClusterIP
+	- pod is running
+	- InfluxDB & Telegraf running
 	- ...
 
 - Grafana:
