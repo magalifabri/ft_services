@@ -13,7 +13,10 @@ RUN mkdir -p /usr/share/nginx/html/
 
 COPY srcs/index.html /usr/share/nginx/html/
 
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj "/C=BE/ST=Brussels/L=Brussels/O=42/OU=mfabri/CN=wp"
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/ssl/private/nginx-selfsigned.key \
+    -out /etc/ssl/certs/nginx-selfsigned.crt \
+    -subj "/C=BE/ST=Brussels/L=Brussels/O=42/OU=mfabri/CN=wp"
 
 EXPOSE 80 443
 
