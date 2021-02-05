@@ -40,6 +40,10 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Troubleshoot: "500 OOPS: priv_sock_get_cmd"](https://www.liquidweb.com/kb/error-500-oops-priv_sock_get_cmd-on-fedora-20-solved/)
 	- [Troubleshoot: "Failed to retrieve directory listing"](https://serverfault.com/questions/555541/failed-to-retrieve-directory-listing-in-filezilla-connecting-to-vsftpd)
 	- [Troubleshoot: Illegal PORT command](https://askubuntu.com/questions/358603/vsftpd-illegal-port-command)
+	- [Configure VSFTPD with an SSL](https://www.liquidweb.com/kb/configure-vsftpd-ssl/)
+	- [HOW TO : FTPS SERVER CONFIGURATION IN LINUX](https://www.linuxnix.com/ftps-server-configuration/)
+	- [change root password using bash script](https://stackoverflow.com/questions/52211476/change-root-password-using-bash-script)
+
 
 ## STATE OF PROGRESSION
 
@@ -50,7 +54,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ The page displayed does not matter as long as it is not an http error.
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
 	- ~ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
-		- logging in via proxy gives 404
+		- logging in/out via proxy gives 404
 
 - mysql
 	- √ Of type ClusterIP
@@ -81,8 +85,9 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	
 - FTPS:
 	- √ Of type LoadBalancer
-	- x ssl
-	- ...
+	- √ ssl
+	- √ can log in with FileZilla (un: root & pw: pass)
+	- ? improve configuration in respect to security?
 	
 - Influxd:
 	- √ Of type ClusterIP
