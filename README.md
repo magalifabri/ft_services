@@ -34,43 +34,60 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Beginner’s Guide](http://nginx.org/en/docs/beginners_guide.html)
 	- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
+- FTPS
+	- [How to install and configure VSFTPD](https://www.howtoforge.com/tutorial/how-to-install-and-configure-vsftpd/)
+	- [VSFTPD.CONF](http://vsftpd.beasts.org/vsftpd_conf.html)
+	- [Troubleshoot: "500 OOPS: priv_sock_get_cmd"](https://www.liquidweb.com/kb/error-500-oops-priv_sock_get_cmd-on-fedora-20-solved/)
+	- [Troubleshoot: "Failed to retrieve directory listing"](https://serverfault.com/questions/555541/failed-to-retrieve-directory-listing-in-filezilla-connecting-to-vsftpd)
+	- [Troubleshoot: Illegal PORT command](https://askubuntu.com/questions/358603/vsftpd-illegal-port-command)
+
 ## STATE OF PROGRESSION
+
 - nginx:
-	- pod is running
-	- both port 80 and 443 load in the browser
-	- ssl seems to work
+	- √ Of type LoadBalancer
 	- √ A container with an nginx server listening on ports 80 and 443.
 	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
-	- x The page displayed does not matter as long as it is not an http error.
+	- √ The page displayed does not matter as long as it is not an http error.
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
 	- ~ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
 		- logging in via proxy gives 404
 
-- mysql:
-	- pod is running
-	- mysql seems to be running
+- mysql
+	- √ Of type ClusterIP
 
 - wordpress:
-	- pod is running
-	- loads in the browser (depends on "php -S"; don't know if that's a good solution)
-	- seems functional (need to verify database use with phpmyadmin once that is up and running)
+	- depends on "php -S"; don't know if that's a good solution
+	- √ Of type LoadBalancer
 	- √ listening on port 5050
 	- √ work with a MySQL database
 	- √ Both services (wordpress & mysql) have to run in separate containers)
 	- x The WordPress website will have several users and an administrator
-	- x Wordpress needs its own nginx server
+	- ? Wordpress needs its own nginx server
 	- √ The Load Balancer should be able to redirect directly to this service.
 
 - phpmyadmin:
-	- pod is running
-	- loads in the browser (depends on "php -S"; don't know if that's a good solution)
-	- seems functional
+	- depends on "php -S"; don't know if that's a good solution
+	- √ Of type LoadBalancer
 	- √ listening on port 5000
 	- √ linked with the MySQL database
-	- x its own nginx server
+	- ? its own nginx server
+		- what does this even mean? A seperate server block in the NGINX configuration file?
 	- √ The Load Balancer should be able to redirect directly to this service.
 
 - MetalLB (load balancer):
 	- √? The Load Balancerwhich manages the external access of your services. It will be the only entry point to your cluster.
 	- √ (so far) You must keep the ports associated with the service (IP:3000 for Grafana etc).
 	- √ Load Balancer will have a single ip
+	
+- FTPS:
+	- √ Of type LoadBalancer
+	- x ssl
+	- ...
+	
+- Influxd:
+	- √ Of type ClusterIP
+	- ...
+
+- Grafana:
+	- √ Of type LoadBalancer
+	- ...
