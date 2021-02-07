@@ -19,6 +19,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [installing MySQL on Alpine](https://wiki.alpinelinux.org/wiki/Mysql)
 	- [[HELP] Created a container from alpine, installed MariaDB. MariaDB won't start.](https://www.reddit.com/r/docker/comments/3ucc8y/help_created_a_container_from_alpine_installed/)
 	- [Could not open mysql.plugin table. Some plugins may be not loaded](https://stackoverflow.com/questions/34198735/could-not-open-mysql-plugin-table-some-plugins-may-be-not-loaded)
+	- [Built-in web server](https://www.php.net/manual/en/features.commandline.webserver.php)
 
 - WordPress
 	- [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/#set-database-host)
@@ -50,9 +51,14 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 - InfluxDB
 	- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/)
 
+- Telegraf
+	- [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
+
 ## STATE OF PROGRESSION
 
-- nginx:
+- Specify versions in Dockerfiles?
+
+- NGINX:
 	- √ Of type LoadBalancer
 	- √ A container with an nginx server listening on ports 80 and 443.
 	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
@@ -60,13 +66,13 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
 	- √ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
 	- ? You must be able to access the nginx container by logging into SSH.
-	- Telegraf > Grafana
+	- √ Telegraf
 
-- mysql
+- MySQL
 	- √ Of type ClusterIP
-	- Telegraf > Grafana
+	- √ Telegraf
 
-- wordpress:
+- Wordpress:
 	- ? depends on "php -S"; don't know if that's a good solution
 	- √ Of type LoadBalancer
 	- √ listening on port 5050
@@ -75,9 +81,9 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- The WordPress website will have several users and an administrator
 	- ? Wordpress needs its own nginx server
 	- √ The Load Balancer should be able to redirect directly to this service.
-	- Telegraf > Grafana
+	- √ Telegraf
 
-- phpmyadmin:
+- phpMyAdmin:
 	- ? depends on "php -S"; don't know if that's a good solution
 	- √ Of type LoadBalancer
 	- √ listening on port 5000
@@ -85,7 +91,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- ? its own nginx server
 		- what does this even mean? A seperate server block in the NGINX configuration file?
 	- √ The Load Balancer should be able to redirect directly to this service.
-	- Telegraf > Grafana
+	- √ Telegraf
 
 - MetalLB (load balancer):
 	- √? The Load Balancer which manages the external access of your services. It will be the only entry point to your cluster.
@@ -97,19 +103,21 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ ssl
 	- √ can log in with FileZilla (un: root & pw: pass)
 	- ? improve configuration in respect to security?
-	- Telegraf > Grafana
+	- √ Telegraf
 	
-- Influxd:
+- InfluxDB:
 	- √ Of type ClusterIP
 	- √ pod is running
-	- √ InfluxDB & Telegraf running
-	- configure to work with Grafana
+	- √ InfluxDB running
+	- √ Telegraf
+	- √ configure to work with Grafana
 
 - Grafana:
 	- √ Of type LoadBalancer
 	- √ pod is running
 	- √ listening on port 3000
 	- √ Grafana is running
+	- √ Telegraf
 	- Grafana is correctly configured
 	- container dashboards:
 		- nginx
