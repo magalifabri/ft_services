@@ -1,4 +1,4 @@
-FROM alpine:3.12.0
+FROM alpine:3.13.1
 
 RUN apk update && apk add \
     vim \
@@ -7,20 +7,15 @@ RUN apk update && apk add \
     php-mysqli \
     php-mbstring \ 
     php-json \
-    php-session
+    php-session \
+    telegraf
 
 RUN mkdir -p /var/www/html/wp
 
-COPY ./srcs/wp                  /var/www/html/wp
-COPY ./srcs/wp-config.php       var/www/html/wp/
+COPY /srcs/wp /var/www/html/wp
+COPY /srcs/wp-config.php /var/www/html/wp/
+COPY /srcs/start.sh /srcs/telegraf.conf ./
 
 EXPOSE 5050
 
-CMD /usr/bin/php -S 0.0.0.0:5050 -t /var/www/html/wp/
-
-# mv var/www/html/wp/wp-config-sample.php var/www/html/wp/wp-config.php
-
-# /usr/bin/php -S 0.0.0.0:80 -t /var/www/html/wp/
-
-# minikube service wp-service
-
+CMD sh start.sh
