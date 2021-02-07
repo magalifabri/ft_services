@@ -44,6 +44,11 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [HOW TO : FTPS SERVER CONFIGURATION IN LINUX](https://www.linuxnix.com/ftps-server-configuration/)
 	- [change root password using bash script](https://stackoverflow.com/questions/52211476/change-root-password-using-bash-script)
 
+- Grafana
+	- [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)
+
+- InfluxDB
+	- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/)
 
 ## STATE OF PROGRESSION
 
@@ -55,46 +60,63 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
 	- √ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
 	- ? You must be able to access the nginx container by logging into SSH.
+	- Telegraf > Grafana
 
 - mysql
 	- √ Of type ClusterIP
+	- Telegraf > Grafana
 
 - wordpress:
-	- depends on "php -S"; don't know if that's a good solution
+	- ? depends on "php -S"; don't know if that's a good solution
 	- √ Of type LoadBalancer
 	- √ listening on port 5050
 	- √ work with a MySQL database
 	- √ Both services (wordpress & mysql) have to run in separate containers)
-	- x The WordPress website will have several users and an administrator
+	- The WordPress website will have several users and an administrator
 	- ? Wordpress needs its own nginx server
 	- √ The Load Balancer should be able to redirect directly to this service.
+	- Telegraf > Grafana
 
 - phpmyadmin:
-	- depends on "php -S"; don't know if that's a good solution
+	- ? depends on "php -S"; don't know if that's a good solution
 	- √ Of type LoadBalancer
 	- √ listening on port 5000
 	- √ linked with the MySQL database
 	- ? its own nginx server
 		- what does this even mean? A seperate server block in the NGINX configuration file?
 	- √ The Load Balancer should be able to redirect directly to this service.
+	- Telegraf > Grafana
 
 - MetalLB (load balancer):
-	- √? The Load Balancerwhich manages the external access of your services. It will be the only entry point to your cluster.
+	- √? The Load Balancer which manages the external access of your services. It will be the only entry point to your cluster.
 	- √ (so far) You must keep the ports associated with the service (IP:3000 for Grafana etc).
 	- √ Load Balancer will have a single ip
-	
+
 - FTPS:
 	- √ Of type LoadBalancer
 	- √ ssl
 	- √ can log in with FileZilla (un: root & pw: pass)
 	- ? improve configuration in respect to security?
+	- Telegraf > Grafana
 	
 - Influxd:
 	- √ Of type ClusterIP
-	- pod is running
-	- InfluxDB & Telegraf running
-	- ...
+	- √ pod is running
+	- √ InfluxDB & Telegraf running
+	- configure to work with Grafana
 
 - Grafana:
 	- √ Of type LoadBalancer
-	- ...
+	- √ pod is running
+	- √ listening on port 3000
+	- √ Grafana is running
+	- Grafana is correctly configured
+	- container dashboards:
+		- nginx
+		- phpmyadmin
+		- wordpress
+		- mysql
+		- ftps
+		- influxdb
+		- grafana?
+	- ? automate grafana dashboard creation?

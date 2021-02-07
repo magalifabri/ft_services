@@ -1,22 +1,20 @@
 #! /bin/sh
 
-# start InfluxDB ("& sleep 5" to regain cli prompt)
-influxd & sleep 5
+# start InfluxDB in the background
+influxd &
 
-# create database and user for Telegraf
-echo "create database telegraf" | influx
-echo "create user telegraf with password 'pass'" | influx
+# wait for it to start up before continuing
+sleep 5
 
-# put the telegraf.conf file where it'll find it
-mkdir etc/telegraf
-mv telegraf.conf etc/telegraf
-# cp etc/telegraf.conf etc/telegraf/
+# create a user and databases for Telegraf's input on the services
+echo "create user user with password 'pass'" | influx
+echo "create database influx_metrics_db" | influx
+echo "create database nginx_metrics_db" | influx
+echo "create database phpmyadmin_metrics_db" | influx
+echo "create database wordpress_metrics_db" | influx
+echo "create database mysql_metrics_db" | influx
+echo "create database ftps_metrics_db" | influx
+echo "create database grafana_metrics_db" | influx
 
-# start telegraf
-telegraf
-
-tail -f /dev/null
-# mv etc/telegraf/telegraf.conf etc/telegraf/telegraf.conf.default
-
-
-# grafana-server -config /usr/share/grafana/conf/defaults.ini -homepath /usr/share/grafana/
+# start Telegraf with the appropriate configutations
+telegraf --config telegraf.conf
