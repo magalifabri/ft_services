@@ -47,6 +47,10 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 
 - Grafana
 	- [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)
+	- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/)
+	- [Provision dashboards and data sources](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#1)
+	- [Provisioning Grafana Datasources and Dashboards Automagically](https://blog.56k.cloud/provisioning-grafana-datasources-and-dashboards-automagically/)
+	- [Troubleshooting: Plugin not found, no installed plugin with that id](https://community.grafana.com/t/plugin-not-found-no-installed-plugin-with-that-id/26646)
 
 - InfluxDB
 	- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/)
@@ -120,11 +124,11 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Telegraf
 	- Grafana is correctly configured
 	- container dashboards:
-		- nginx
-		- phpmyadmin
-		- wordpress
-		- mysql
-		- ftps
-		- influxdb
+		- √ nginx
+		- √ phpmyadmin
+		- √ wordpress
+		- √ mysql
+		- √ ftps
+		- √ influxdb
 		- grafana?
 	- ? automate grafana dashboard creation?

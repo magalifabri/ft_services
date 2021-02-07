@@ -1,124 +1,59 @@
-# apiVersion: 1
-
-# datasources:
-#   - name: TestData DB II
-#     type: testdata
-  # - name: NGINX Metrics DB
-  #   type: InfluxDB
-
 # config file version
 apiVersion: 1
 
 # list of datasources that should be deleted from the database
 # deleteDatasources:
-#   - name: Graphite
-#     orgId: 1
 
 # list of datasources to insert/update depending
 # what's available in the database
 datasources:
-  - name: TestData DB I
-    type: testdata
-  # <string, required> name of the datasource. Required
-  - name: NGINX Metrics DB
-    # <string, required> datasource type. Required
-    type: InfluxDB
-    # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
-    access: proxy
-    # <int> org id. will default to orgId 1 if not specified
-    orgId: 1
-    # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
-    uid: my_unique_uid
-    # <string> url
-    # url: http://localhost:8080
+  - name: InfluxDB Metrics DB
+    type: influxdb
     url: http://influx-service:8086
-    # <string> Deprecated, use secureJsonData.password
-    # password: pass
-    # <string> database user, if used
-    user: user
-    # <string> database name, if used
     database: influx_metrics_db
-    # <bool> enable/disable basic auth
-    # basicAuth:
-    # <string> basic auth username
-    # basicAuthUser:
-    # <string> Deprecated, use secureJsonData.basicAuthPassword
-    # basicAuthPassword:
-    # <bool> enable/disable with credentials headers
-    # withCredentials:
-    # <bool> mark as default datasource. Max one per org
-    # isDefault:
-    # <map> fields that will be converted to json and stored in jsonData
-    jsonData:
-      graphiteVersion: '1.1'
-      tlsAuth: true
-      tlsAuthWithCACert: true
-    # <string> json object of data that will be encrypted.
+    user: user
     secureJsonData:
-      tlsCACert: '...'
-      tlsClientCert: '...'
-      tlsClientKey: '...'
-      # <string> database password, if used
       password: pass
-      # <string> basic auth password
-      basicAuthPassword:
-    version: 1
-    # <bool> allow users to edit datasources from the UI.
-    editable: false
-# # config file version
-# apiVersion: 1
+  - name: NGINX Metrics DB
+    type: influxdb
+    url: http://influx-service:8086
+    database: nginx_metrics_db
+    user: user
+    secureJsonData:
+      password: pass
+  - name: phpMyAdmin Metrics DB
+    type: influxdb
+    url: http://influx-service:8086
+    database: phpmyadmin_metrics_db
+    user: user
+    secureJsonData:
+      password: pass
+  - name: WordPress Metrics DB
+    type: influxdb
+    url: http://influx-service:8086
+    database: wordpress_metrics_db
+    user: user
+    secureJsonData:
+      password: pass
+  - name: MySQL Metrics DB
+    type: influxdb
+    url: http://influx-service:8086
+    database: mysql_metrics_db
+    user: user
+    secureJsonData:
+      password: pass
+  - name: FTPS Metrics DB
+    type: influxdb
+    url: http://influx-service:8086
+    database: ftps_metrics_db
+    user: user
+    secureJsonData:
+      password: pass
+  # - name: Grafana Metrics DB
+  #   type: influxdb
+  #   url: http://influx-service:8086
+  #   database: grafana_metrics_db
+  #   user: user
+  #   secureJsonData:
+  #     password: pass
 
-# # list of datasources that should be deleted from the database
-# # deleteDatasources:
-# #   - name: Graphite
-# #     orgId: 1
-
-# # list of datasources to insert/update depending
-# # what's available in the database
-# datasources:
-#   # <string, required> name of the datasource. Required
-#   - name: Graphite
-#     # <string, required> datasource type. Required
-#     type: graphite
-#     # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
-#     access: proxy
-#     # <int> org id. will default to orgId 1 if not specified
-#     orgId: 1
-#     # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
-#     uid: my_unique_uid
-#     # <string> url
-#     # url: http://localhost:8080
-#     url: http://influx-server:8086
-#     # <string> Deprecated, use secureJsonData.password
-#     # password:
-#     # <string> database user, if used
-#     user: user
-#     # <string> database name, if used
-#     database: influx_metrics_db
-#     # <bool> enable/disable basic auth
-#     # basicAuth:
-#     # <string> basic auth username
-#     # basicAuthUser:
-#     # <string> Deprecated, use secureJsonData.basicAuthPassword
-#     # basicAuthPassword:
-#     # <bool> enable/disable with credentials headers
-#     # withCredentials:
-#     # <bool> mark as default datasource. Max one per org
-#     # isDefault:
-#     # <map> fields that will be converted to json and stored in jsonData
-#     jsonData:
-#       graphiteVersion: '1.1'
-#       tlsAuth: true
-#       tlsAuthWithCACert: true
-#     # <string> json object of data that will be encrypted.
-#     secureJsonData:
-#       tlsCACert: '...'
-#       tlsClientCert: '...'
-#       tlsClientKey: '...'
-#       # <string> database password, if used
-#       password:
-#       # <string> basic auth password
-#       basicAuthPassword:
-#     version: 1
-#     # <bool> allow users to edit datasources from the UI.
-#     editable: false

@@ -8,6 +8,7 @@ RUN apk update && apk add \
 # COPY srcs/grafana.ini ./etc/
 COPY /srcs/start.sh /srcs/telegraf.conf ./
 COPY /srcs/provisioning/ /usr/share/grafana/conf/provisioning/
+COPY /srcs/dashboards/ /var/lib/grafana/dashboards/
 
 EXPOSE 3000
 
