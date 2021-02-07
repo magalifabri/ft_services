@@ -1,17 +1,17 @@
-FROM alpine:3.12.0
+FROM alpine:3.13.1
 
 RUN apk update && apk add \
     nginx \
     openssl \
-    vim
+    vim \
+    telegraf
 
-RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx \
+    /usr/share/nginx/html/
 
 COPY srcs/default.conf /etc/nginx/conf.d/
-
-RUN mkdir -p /usr/share/nginx/html/
-
 COPY srcs/index.html /usr/share/nginx/html/
+COPY srcs/start.sh srcs/telegraf.conf ./
 
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/ssl/private/nginx-selfsigned.key \
@@ -20,5 +20,4 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 EXPOSE 80 443
 
-CMD nginx -g "daemon off;"
-# CMD tail -f /dev/null
+CMD sh start.sh
