@@ -6,8 +6,7 @@ RUN apk update && apk add \
 	mariadb-client \
 	telegraf
 
-COPY srcs/mysql_setup.sql srcs/start.sh srcs/create_tables.sql ./
-COPY srcs/my.cnf srcs/telegraf.conf ./
+COPY /srcs/ ./
 
 EXPOSE 3306
 
