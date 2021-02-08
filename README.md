@@ -83,7 +83,11 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ work with a MySQL database
 	- √ Both services (wordpress & mysql) have to run in separate containers)
 	- The WordPress website will have several users and an administrator
-	- ? Wordpress needs its own nginx server
+		- admin: R)kUxc1Kc%e2yEwRF5
+		- user1: yXIw2ceh9z%)5)lu(SYKAK^a
+		- user2: &xotFcVWxJJE109@j25h8di7
+	- Wordpress needs its own nginx server
+		- ssl?
 	- √ The Load Balancer should be able to redirect directly to this service.
 	- √ Telegraf
 
@@ -92,8 +96,8 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Of type LoadBalancer
 	- √ listening on port 5000
 	- √ linked with the MySQL database
-	- ? its own nginx server
-		- what does this even mean? A seperate server block in the NGINX configuration file?
+	- its own nginx server
+		- ssl?
 	- √ The Load Balancer should be able to redirect directly to this service.
 	- √ Telegraf
 
