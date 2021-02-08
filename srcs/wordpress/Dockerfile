@@ -8,14 +8,22 @@ RUN apk update && apk add \
     php-mbstring \ 
     php-json \
     php-session \
-    telegraf
+    telegraf \
+    nginx
 
-RUN mkdir -p /var/www/html/wp
+RUN mkdir -p /var/www/html/wp \
+    mkdir -p /run/nginx
 
 COPY /srcs/wp /var/www/html/wp
 COPY /srcs/wp-config.php /var/www/html/wp/
 COPY /srcs/start.sh /srcs/telegraf.conf ./
+COPY srcs/default.conf /etc/nginx/conf.d/
 
 EXPOSE 5050
 
-CMD sh start.sh
+CMD /start.sh
+
+# RUN mkdir -p /run/nginx
+
+# start NGINX (`deamon off` keeps the process running)
+# nginx -g "daemon off;"
