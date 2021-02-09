@@ -1,7 +1,6 @@
 .DS_STORE
 *.swp
 *.pdf
-practice
 study notes.md
 setup-metallb.sh
 setup-wp.sh
