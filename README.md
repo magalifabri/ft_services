@@ -38,6 +38,13 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Creating NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
 	- [Beginner’s Guide](http://nginx.org/en/docs/beginners_guide.html)
 	- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+	- SSH:
+		- [How To SSH Into A Running Docker Container And Run Commands](https://phoenixnap.com/kb/how-to-ssh-into-docker-container)
+		- [Troubleshooting: sshd: no hostkeys available -- exiting](https://www.garron.me/en/linux/sshd-no-hostkeys-available-exiting.html)
+		- [How to SSH on Mac](https://www.servermania.com/kb/articles/ssh-mac/)
+		- [bash: /home/user/.ssh/authorized_keys: No such file or directory](https://askubuntu.com/questions/466549/bash-home-user-ssh-authorized-keys-no-such-file-or-directory)
+		- [How to Troubleshoot SSH Authentication Issues](https://www.digitalocean.com/docs/droplets/resources/troubleshooting-ssh/authentication/#:~:text=Make%20sure%20the%20authorized_keys%20file,properly%20configured%20for%20the%20session.)
+		- [Troubleshooting: Permission denied](https://www.digitalocean.com/community/questions/ssh-copy-id-not-working-permission-denied-publickey) (ddspell's comment)
 
 - FTPS
 	- [How to install and configure VSFTPD](https://www.howtoforge.com/tutorial/how-to-install-and-configure-vsftpd/)
