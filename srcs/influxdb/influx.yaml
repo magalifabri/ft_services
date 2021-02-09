@@ -39,3 +39,14 @@ spec:
     - protocol: TCP
       port: 8086
       targetPort: 8086
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influx-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
