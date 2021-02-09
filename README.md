@@ -7,6 +7,10 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 - [How to Run Locally Built Docker Images in Kubernetes](https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d)
 - [Accessing apps: How to access applications running within minikube # Using minikube tunnel](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel)
 
+- Persistent Volumes
+	- [Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+	- [How To Deploy InfluxDB / Telegraf / Grafana on K8s? # Mount a Data Volume](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#mount-a-data-volume)
+
 - MetalLB
 	- [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
 	- [MetalLB Configuration in Minikube — To enable Kubernetes service of type “LoadBalancer”](https://medium.com/faun/metallb-configuration-in-minikube-to-enable-kubernetes-service-of-type-loadbalancer-9559739787df)
@@ -16,18 +20,18 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 
 - MySQL
 	- [MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
-	- [installing MySQL on Alpine](https://wiki.alpinelinux.org/wiki/Mysql)
-	- [[HELP] Created a container from alpine, installed MariaDB. MariaDB won't start.](https://www.reddit.com/r/docker/comments/3ucc8y/help_created_a_container_from_alpine_installed/)
-	- [Could not open mysql.plugin table. Some plugins may be not loaded](https://stackoverflow.com/questions/34198735/could-not-open-mysql-plugin-table-some-plugins-may-be-not-loaded)
-	- [Built-in web server](https://www.php.net/manual/en/features.commandline.webserver.php)
+	- [Troubleshooting: [HELP] Created a container from alpine, installed MariaDB. MariaDB won't start.](https://www.reddit.com/r/docker/comments/3ucc8y/help_created_a_container_from_alpine_installed/)
+	- [Troubleshooting: Could not open mysql.plugin table. Some plugins may be not loaded](https://stackoverflow.com/questions/34198735/could-not-open-mysql-plugin-table-some-plugins-may-be-not-loaded)
 
 - WordPress
 	- [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/#set-database-host)
 	- [Debugging in WordPress](https://wordpress.org/support/article/debugging-in-wordpress/)
+	- [Troubleshooting: NGINX downloads the index.php file](https://stackoverflow.com/questions/25591040/nginx-serves-php-files-as-downloads-instead-of-executing-them)
+	- [Troubleshooting: Bad Gateway](https://medium.com/@armno/til-fixing-http-502-bad-gateway-error-nginx-wordpress-a591be919adf)
 
 - phpMyAdmin
-	- [error mysqli::real_connect(): (HY000/2002): No such file or directory](https://stackoverflow.com/questions/29928109/getting-error-mysqlireal-connect-hy000-2002-no-such-file-or-directory-wh)
 	- [Configuration](https://docs.phpmyadmin.net/en/latest/config.html)
+	- [Troubleshooting: error mysqli::real_connect(): (HY000/2002): No such file or directory](https://stackoverflow.com/questions/29928109/getting-error-mysqlireal-connect-hy000-2002-no-such-file-or-directory-wh)
 
 - NGINX
 	- [Redirect HTTP to HTTPS in Nginx](https://linuxize.com/post/redirect-http-to-https-in-nginx/#:~:text=The%20preferred%20method%20to%20redirect,unpredictable%20behavior%20of%20the%20server.)
@@ -38,29 +42,33 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 - FTPS
 	- [How to install and configure VSFTPD](https://www.howtoforge.com/tutorial/how-to-install-and-configure-vsftpd/)
 	- [VSFTPD.CONF](http://vsftpd.beasts.org/vsftpd_conf.html)
-	- [Troubleshoot: "500 OOPS: priv_sock_get_cmd"](https://www.liquidweb.com/kb/error-500-oops-priv_sock_get_cmd-on-fedora-20-solved/)
-	- [Troubleshoot: "Failed to retrieve directory listing"](https://serverfault.com/questions/555541/failed-to-retrieve-directory-listing-in-filezilla-connecting-to-vsftpd)
-	- [Troubleshoot: Illegal PORT command](https://askubuntu.com/questions/358603/vsftpd-illegal-port-command)
+	- [Troubleshooting: "500 OOPS: priv_sock_get_cmd"](https://www.liquidweb.com/kb/error-500-oops-priv_sock_get_cmd-on-fedora-20-solved/)
+	- [Troubleshooting: "Failed to retrieve directory listing"](https://serverfault.com/questions/555541/failed-to-retrieve-directory-listing-in-filezilla-connecting-to-vsftpd)
+	- [Troubleshooting: Illegal PORT command](https://askubuntu.com/questions/358603/vsftpd-illegal-port-command)
 	- [Configure VSFTPD with an SSL](https://www.liquidweb.com/kb/configure-vsftpd-ssl/)
 	- [HOW TO : FTPS SERVER CONFIGURATION IN LINUX](https://www.linuxnix.com/ftps-server-configuration/)
 	- [change root password using bash script](https://stackoverflow.com/questions/52211476/change-root-password-using-bash-script)
 
 - Grafana
-	- [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)
+	- & InfluxDB & Telegraf: [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)
 	- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/)
 	- [Provision dashboards and data sources](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#1)
 	- [Provisioning Grafana Datasources and Dashboards Automagically](https://blog.56k.cloud/provisioning-grafana-datasources-and-dashboards-automagically/)
 	- [Troubleshooting: Plugin not found, no installed plugin with that id](https://community.grafana.com/t/plugin-not-found-no-installed-plugin-with-that-id/26646)
 
 - InfluxDB
-	- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/)
+	- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/) (viewing data in the database)
 
 - Telegraf
 	- [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
 
 ## STATE OF PROGRESSION
 
-- Specify versions in Dockerfiles?
+- √ Kubernetes web dashboard
+- √ In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.
+- All your containers must restart in case of a crash or stop of one of its component parts.
+
+- ? Specify versions in Dockerfiles?
 
 - NGINX:
 	- √ Of type LoadBalancer
@@ -77,27 +85,25 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Telegraf
 
 - Wordpress:
-	- ? depends on "php -S"; don't know if that's a good solution
 	- √ Of type LoadBalancer
 	- √ listening on port 5050
 	- √ work with a MySQL database
 	- √ Both services (wordpress & mysql) have to run in separate containers)
-	- The WordPress website will have several users and an administrator
+	- √ The WordPress website will have several users and an administrator
 		- admin: R)kUxc1Kc%e2yEwRF5
 		- user1: yXIw2ceh9z%)5)lu(SYKAK^a
 		- user2: &xotFcVWxJJE109@j25h8di7
-	- Wordpress needs its own nginx server
-		- ssl?
+	- √ Wordpress needs its own nginx server
+		- ? ssl?
 	- √ The Load Balancer should be able to redirect directly to this service.
 	- √ Telegraf
 
 - phpMyAdmin:
-	- ? depends on "php -S"; don't know if that's a good solution
 	- √ Of type LoadBalancer
 	- √ listening on port 5000
 	- √ linked with the MySQL database
-	- its own nginx server
-		- ssl?
+	- √ its own nginx server
+		- ? ssl?
 	- √ The Load Balancer should be able to redirect directly to this service.
 	- √ Telegraf
 
@@ -126,7 +132,6 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ listening on port 3000
 	- √ Grafana is running
 	- √ Telegraf
-	- Grafana is correctly configured
 	- container dashboards:
 		- √ nginx
 		- √ phpmyadmin
@@ -135,4 +140,4 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 		- √ ftps
 		- √ influxdb
 		- grafana?
-	- ? automate grafana dashboard creation?
+	- √ automated datasource & dashboard creation

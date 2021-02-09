@@ -8,16 +8,17 @@ RUN apk update && apk add \
     php-mbstring \ 
     php-json \
     php-session \
-    telegraf
+    telegraf \
+    nginx
 
-RUN mkdir -p /usr/share/webapps/
+RUN mkdir -p /usr/share/webapps/ \
+    mkdir -p /run/nginx
 
 COPY /srcs/phpmyadmin /usr/share/webapps/phpmyadmin
 COPY /srcs/config.inc.php /usr/share/webapps/phpmyadmin/config.inc.php
 COPY /srcs/start.sh /srcs/telegraf.conf ./
+COPY srcs/default.conf /etc/nginx/conf.d/
 
 EXPOSE 5000
 
-CMD sh start.sh
-# CMD tail -f /dev/null
-# CMD php -S 0.0.0.0:5000 -t /usr/share/webapps/phpmyadmin/
+CMD /start.sh

@@ -22,8 +22,3 @@ COPY srcs/default.conf /etc/nginx/conf.d/
 EXPOSE 5050
 
 CMD /start.sh
-
-# RUN mkdir -p /run/nginx
-
-# start NGINX (`deamon off` keeps the process running)
-# nginx -g "daemon off;"
