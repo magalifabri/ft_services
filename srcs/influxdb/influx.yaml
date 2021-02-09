@@ -20,6 +20,13 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 8086
+        volumeMounts:
+        - name: influx-persistent-storage
+          mountPath: /root/.influxdb
+      volumes:
+        - name: influx-persistent-storage
+          persistentVolumeClaim:
+            claimName: influx-pv-claim
 ---
 apiVersion: v1
 kind: Service
