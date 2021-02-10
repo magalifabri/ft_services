@@ -31,7 +31,7 @@ spec:
   selector:
     app: pma
   type: LoadBalancer
-  loadBalancerIP: 192.168.64.17
+  loadBalancerIP: 192.168.64.21
   ports:
     - protocol: TCP
       port: 5000
