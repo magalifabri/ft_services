@@ -16,7 +16,7 @@ RUN mkdir -p /usr/share/webapps/ \
 
 COPY /srcs/phpmyadmin /usr/share/webapps/phpmyadmin
 COPY /srcs/config.inc.php /usr/share/webapps/phpmyadmin/config.inc.php
-COPY /srcs/start.sh /srcs/telegraf.conf ./
+COPY /srcs/start.sh /srcs/telegraf.conf /srcs/livenessProber.sh ./
 COPY srcs/default.conf /etc/nginx/conf.d/
 
 EXPOSE 5000

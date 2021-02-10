@@ -23,6 +23,13 @@ spec:
         volumeMounts:
         - name: influx-persistent-storage
           mountPath: /root/.influxdb
+        livenessProbe:
+          exec:
+            command:
+            - pgrep
+            - influxd
+          initialDelaySeconds: 5
+          periodSeconds: 5
       volumes:
         - name: influx-persistent-storage
           persistentVolumeClaim:

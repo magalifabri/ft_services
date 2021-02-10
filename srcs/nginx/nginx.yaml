@@ -25,6 +25,13 @@ spec:
           containerPort: 443
         # - name: ssh
         #   containerPort: 22
+        livenessProbe:
+          exec:
+            command:
+            - pgrep
+            - telegraf
+          initialDelaySeconds: 5
+          periodSeconds: 5
 ---
 apiVersion: v1
 kind: Service

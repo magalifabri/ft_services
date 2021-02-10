@@ -16,7 +16,7 @@ RUN mkdir -p /var/www/html/wp \
 
 COPY /srcs/wp /var/www/html/wp
 COPY /srcs/wp-config.php /var/www/html/wp/
-COPY /srcs/start.sh /srcs/telegraf.conf ./
+COPY /srcs/start.sh /srcs/telegraf.conf srcs/livenessProber.sh ./
 COPY srcs/default.conf /etc/nginx/conf.d/
 
 EXPOSE 5050
