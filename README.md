@@ -148,3 +148,13 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 		- √ influxdb
 		- grafana?
 	- √ automated datasource & dashboard creation
+
+[How to use sed to find and replace text in files in Linux / Unix shell](https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/)
+[What is wrong with my string substitution using sed on Mac OS X?](https://stackoverflow.com/questions/28592043/what-is-wrong-with-my-string-substitution-using-sed-on-mac-os-x)
+[Environment variable substitution in sed](https://stackoverflow.com/questions/584894/environment-variable-substitution-in-sed)
+[Odd Sed Error Message](https://stackoverflow.com/questions/1180172/odd-sed-error-message)
+[RE error: illegal byte sequence on Mac OS X](https://stackoverflow.com/questions/19242275/re-error-illegal-byte-sequence-on-mac-os-x)
+[Why does sed not replace all occurrences?](https://stackoverflow.com/questions/15849119/why-does-sed-not-replace-all-occurrences)
+[How to exclude a directory in find . command](https://stackoverflow.com/questions/4210042/how-to-exclude-a-directory-in-find-command)
+
+[Minikube is slow and unresponsive](https://stackoverflow.com/questions/56327843/minikube-is-slow-and-unresponsive)
