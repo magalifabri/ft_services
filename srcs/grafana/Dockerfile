@@ -12,4 +12,4 @@ COPY /srcs/dashboards/ /var/lib/grafana/dashboards/
 
 EXPOSE 3000
 
-CMD sh start.sh
+CMD /start.sh
