@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Make sure docker and minikube are running before executing this script
-minikube start --vm-driver=hyperkit
+minikube start --vm-driver=hyperkit --cpus=4 --memory=4400 --disk-size=40000mb 
 
 # set the correct IP the source files
 LC_ALL=C find ./srcs -type d \( -path ./srcs/phpmyadmin/srcs/phpmyadmin -o -path ./srcs/wordpress/srcs/wp \) -prune -false -o -type f -exec sed -i "" "s|$(cat srcs/last_saved_minikube_ip.txt)|$(minikube ip)|g" {} +
