@@ -49,11 +49,11 @@ datasources:
     user: user
     secureJsonData:
       password: pass
-  # - name: Grafana Metrics DB
-  #   type: influxdb
-  #   url: http://influx-service:8086
-  #   database: grafana_metrics_db
-  #   user: user
-  #   secureJsonData:
-  #     password: pass
+  - name: Grafana Metrics DB
+    type: influxdb
+    url: http://influx-service:8086
+    database: grafana_metrics_db
+    user: user
+    secureJsonData:
+      password: pass
 
