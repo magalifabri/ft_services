@@ -4,8 +4,8 @@ RUN apk update && apk add \
     nginx \
     openssl \
     vim \
-    telegraf \
-    openssh-server
+    telegraf
+    # openssh-server
 
 RUN mkdir -p /run/nginx \
     /usr/share/nginx/html/
@@ -19,6 +19,6 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -out /etc/ssl/certs/nginx-selfsigned.crt \
     -subj "/C=BE/ST=Brussels/L=Brussels/O=42/OU=mfabri/CN=wp"
 
-EXPOSE 80 443 22
+EXPOSE 80 443
 
-CMD sh start.sh
+CMD /start.sh
