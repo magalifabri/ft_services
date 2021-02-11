@@ -1,6 +1,17 @@
 # ft_services - WORK IN PROGRESS
 _Project of coding school 19 in Brussels (part of the 42 school network)_
 
+## Instructions
+- to install, run setup.sh
+- to clean up, run `minikube stop` and `minikube delete`
+
+### A few handy commands to interact with the cluster
+- show all kubernetes objects: `kubectl get all`
+- show details on an object: `kubectl describe <object name>`
+- create/update an object with a .yaml file: `kubectl apply -f <path/to/yaml>`
+- delete all the objects defined in a .yaml file: `kubectl delete -f <path/to/yaml>`
+- open a terminal in a pod: `kubectl exec -it <full object name> -- bin/bash`
+
 ## Resources
 - General
 	- **[Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]](https://www.youtube.com/watch?v=X48VuDVv0do) (watch & coding along until and including the Mongo demo project, to get started)**
@@ -68,8 +79,16 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Multiple liveness probes in kuberenetes](https://stackoverflow.com/questions/49172671/multiple-liveness-probes-in-kuberenetes)
 	- [Bash check if process is running or not on Linux / Unix](https://www.cyberciti.biz/faq/bash-check-if-process-is-running-or-notonlinuxunix/)
 
+- Docker
+	- [Docker Tip #18: Please Pin Your Docker Image Versions](https://nickjanetakis.com/blog/docker-tip-18-please-pin-your-docker-image-versions)
 
 ## STATE OF PROGRESSION
+
+- Make custom replacement for NGINX landing page with links to other services and open it automatically at the end of setup.sh
+- √ Update setup.sh
+	- √ hide some output
+	- √ add some output (with colours)
+	- √ check if all images are present?
 
 - √ Kubernetes web dashboard
 - √ In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.
@@ -97,8 +116,6 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 		- nginx (foreground process)
 		- php-fpm (liveness probe)
 		- telegraf (liveness probe)
-
-- ? Specify versions in Dockerfiles?
 
 - NGINX:
 	- √ Of type LoadBalancer
@@ -146,8 +163,8 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Of type LoadBalancer
 	- √ ssl
 	- √ can log in with FileZilla (un: root & pw: pass)
-	- ? improve configuration in respect to security?
 	- √ Telegraf
+	- ??? improve configuration in respect to security?
 	
 - InfluxDB:
 	- √ Of type ClusterIP

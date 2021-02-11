@@ -10,7 +10,7 @@ RUN mkdir -p /run/nginx \
     /usr/share/nginx/html/
 
 COPY /srcs/default.conf /etc/nginx/conf.d/
-COPY /srcs/index.html /usr/share/nginx/html/
+COPY /srcs/index.html /srcs/css.css /usr/share/nginx/html/
 COPY /srcs/start.sh /srcs/telegraf.conf ./
 
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
