@@ -38,7 +38,7 @@ spec:
   selector:
     app: grafana
   type: LoadBalancer
-  loadBalancerIP: 192.168.64.21
+  loadBalancerIP: 192.168.64.22
   ports:
     - protocol: TCP
       port: 3000

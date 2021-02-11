@@ -2,21 +2,18 @@
 _Project of coding school 19 in Brussels (part of the 42 school network)_
 
 ## Resources
-- [Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]](https://www.youtube.com/watch?v=X48VuDVv0do)
-
-- [How to Run Locally Built Docker Images in Kubernetes](https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d)
-- [Accessing apps: How to access applications running within minikube # Using minikube tunnel](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel)
-
-- Persistent Volumes
-	- [Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
-	- [How To Deploy InfluxDB / Telegraf / Grafana on K8s? # Mount a Data Volume](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#mount-a-data-volume)
+- General
+	- **[Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]](https://www.youtube.com/watch?v=X48VuDVv0do) (watch & coding along until and including the Mongo demo project, to get started)**
+	- [How to Run Locally Built Docker Images in Kubernetes](https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d)
+	- [Accessing apps: How to access applications running within minikube # Using minikube tunnel](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel) (for use during development, before MetalLB has been set up to take on this job)
+	- [Troubleshooting: Minikube is slow and unresponsive](https://stackoverflow.com/questions/56327843/minikube-is-slow-and-unresponsive)
 
 - MetalLB
+	- **[MetalLB Configuration in Minikube — To enable Kubernetes service of type “LoadBalancer”](https://medium.com/faun/metallb-configuration-in-minikube-to-enable-kubernetes-service-of-type-loadbalancer-9559739787df)**
 	- [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
-	- [MetalLB Configuration in Minikube — To enable Kubernetes service of type “LoadBalancer”](https://medium.com/faun/metallb-configuration-in-minikube-to-enable-kubernetes-service-of-type-loadbalancer-9559739787df)
 	- [metallb.universe.tf: Installation](https://metallb.universe.tf/installation/)
 	- [metallb.universe.tf: Configuration](https://metallb.universe.tf/configuration/)
-	- [IP Address Sharing](https://metallb.universe.tf/usage/#ip-address-sharing)
+	- [IP Address Sharing](https://metallb.universe.tf/usage/#ip-address-sharing) (colocate services on a single IP)
 
 - MySQL
 	- [MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
@@ -38,13 +35,6 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Creating NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
 	- [Beginner’s Guide](http://nginx.org/en/docs/beginners_guide.html)
 	- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
-	- SSH:
-		- [How To SSH Into A Running Docker Container And Run Commands](https://phoenixnap.com/kb/how-to-ssh-into-docker-container)
-		- [Troubleshooting: sshd: no hostkeys available -- exiting](https://www.garron.me/en/linux/sshd-no-hostkeys-available-exiting.html)
-		- [How to SSH on Mac](https://www.servermania.com/kb/articles/ssh-mac/)
-		- [bash: /home/user/.ssh/authorized_keys: No such file or directory](https://askubuntu.com/questions/466549/bash-home-user-ssh-authorized-keys-no-such-file-or-directory)
-		- [How to Troubleshoot SSH Authentication Issues](https://www.digitalocean.com/docs/droplets/resources/troubleshooting-ssh/authentication/#:~:text=Make%20sure%20the%20authorized_keys%20file,properly%20configured%20for%20the%20session.)
-		- [Troubleshooting: Permission denied](https://www.digitalocean.com/community/questions/ssh-copy-id-not-working-permission-denied-publickey) (ddspell's comment)
 
 - FTPS
 	- [How to install and configure VSFTPD](https://www.howtoforge.com/tutorial/how-to-install-and-configure-vsftpd/)
@@ -57,8 +47,8 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [change root password using bash script](https://stackoverflow.com/questions/52211476/change-root-password-using-bash-script)
 
 - Grafana
-	- & InfluxDB & Telegraf: [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)
-	- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/)
+	- **& InfluxDB & Telegraf: [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)**
+	- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/) (provisioning = providing premade dashboards and data sources)
 	- [Provision dashboards and data sources](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#1)
 	- [Provisioning Grafana Datasources and Dashboards Automagically](https://blog.56k.cloud/provisioning-grafana-datasources-and-dashboards-automagically/)
 	- [Troubleshooting: Plugin not found, no installed plugin with that id](https://community.grafana.com/t/plugin-not-found-no-installed-plugin-with-that-id/26646)
@@ -69,11 +59,44 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 - Telegraf
 	- [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
 
+- Persistent Volumes
+	- [Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+	- [How To Deploy InfluxDB / Telegraf / Grafana on K8s? # Mount a Data Volume](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#mount-a-data-volume)
+
+- Liveness Probes
+	- [Configure Liveness, Readiness and Startup Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+	- [Multiple liveness probes in kuberenetes](https://stackoverflow.com/questions/49172671/multiple-liveness-probes-in-kuberenetes)
+	- [Bash check if process is running or not on Linux / Unix](https://www.cyberciti.biz/faq/bash-check-if-process-is-running-or-notonlinuxunix/)
+
+
 ## STATE OF PROGRESSION
 
 - √ Kubernetes web dashboard
 - √ In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.
-- All your containers must restart in case of a crash or stop of one of its component parts.
+- √? All your containers must restart in case of a crash or stop of one of its component parts.
+	- FTPS:
+		- vsftpd (foreground process)
+		- telegraf (liveness probe)
+	- Grafana:
+		- grafana (foreground process)
+		- telegraf (liveness probe)
+	- InfluxDB:
+		- telegraf (foreground process)
+		- influxd (liveness probe)
+	- MySQL:
+		- telegraf (foreground process)
+		- mysqld (liveness probe)
+	- NGINX:
+		- nginx (foreground process)
+		- telegraf (liveness probe)
+	- phpMyAdmin:
+		- nginx (foreground process)
+		- php-fpm (liveness probe)
+		- telegraf (liveness probe)
+	- WordPress:
+		- nginx (foreground process)
+		- php-fpm (liveness probe)
+		- telegraf (liveness probe)
 
 - ? Specify versions in Dockerfiles?
 
@@ -84,8 +107,8 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ The page displayed does not matter as long as it is not an http error.
 	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
 	- √ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
-	- ? You must be able to access the nginx container by logging into SSH.
 	- √ Telegraf
+	- ~~You must be able to access the nginx container by logging into SSH.~~
 
 - MySQL
 	- √ Of type ClusterIP
@@ -139,22 +162,12 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ listening on port 3000
 	- √ Grafana is running
 	- √ Telegraf
-	- container dashboards:
+	- √ container dashboards:
 		- √ nginx
 		- √ phpmyadmin
 		- √ wordpress
 		- √ mysql
 		- √ ftps
 		- √ influxdb
-		- grafana?
+		- √ grafana
 	- √ automated datasource & dashboard creation
-
-[How to use sed to find and replace text in files in Linux / Unix shell](https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/)
-[What is wrong with my string substitution using sed on Mac OS X?](https://stackoverflow.com/questions/28592043/what-is-wrong-with-my-string-substitution-using-sed-on-mac-os-x)
-[Environment variable substitution in sed](https://stackoverflow.com/questions/584894/environment-variable-substitution-in-sed)
-[Odd Sed Error Message](https://stackoverflow.com/questions/1180172/odd-sed-error-message)
-[RE error: illegal byte sequence on Mac OS X](https://stackoverflow.com/questions/19242275/re-error-illegal-byte-sequence-on-mac-os-x)
-[Why does sed not replace all occurrences?](https://stackoverflow.com/questions/15849119/why-does-sed-not-replace-all-occurrences)
-[How to exclude a directory in find . command](https://stackoverflow.com/questions/4210042/how-to-exclude-a-directory-in-find-command)
-
-[Minikube is slow and unresponsive](https://stackoverflow.com/questions/56327843/minikube-is-slow-and-unresponsive)

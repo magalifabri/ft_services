@@ -41,7 +41,7 @@ spec:
   selector:
     app: ftps
   type: LoadBalancer
-  loadBalancerIP: 192.168.64.21
+  loadBalancerIP: 192.168.64.22
   ports:
   - name: login
     protocol: TCP
