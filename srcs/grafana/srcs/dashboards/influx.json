@@ -348,7 +348,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT available_percent FROM mem",
+          "query": "SELECT used_percent FROM mem",
           "queryType": "randomWalk",
           "rawQuery": true,
           "refId": "A",
