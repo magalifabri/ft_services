@@ -1,18 +1,17 @@
 FROM alpine:3.13.1
 
 RUN apk update && apk add \
-    nginx \
-    openssl \
+    nginx=1.18.0-r13 \
+    openssl=1.1.1i-r0 \
     vim \
-    telegraf
-    # openssh-server
+    telegraf=1.17.0-r0
 
 RUN mkdir -p /run/nginx \
     /usr/share/nginx/html/
 
-COPY srcs/default.conf /etc/nginx/conf.d/
-COPY srcs/index.html /usr/share/nginx/html/
-COPY srcs/start.sh srcs/telegraf.conf ./
+COPY /srcs/default.conf /etc/nginx/conf.d/
+COPY /srcs/index.html /usr/share/nginx/html/
+COPY /srcs/start.sh /srcs/telegraf.conf ./
 
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/ssl/private/nginx-selfsigned.key \
