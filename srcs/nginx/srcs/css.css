@@ -1,0 +1,229 @@
+/* NAV */
+
+/* #navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	position: fixed;
+	top: 0px;
+	align-items: center;
+	background: linear-gradient(
+		0deg,
+		rgb(50, 107, 100),
+		rgb(36, 79, 82)
+	);
+	width: 100%;
+	box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.712);
+	border-bottom: 1px solid black;
+} */
+
+
+/* #navbar a {
+	color: rgb(150, 211, 170);
+	text-decoration: none;
+	padding: 25px 15px;
+	font-family: Montserrat;
+	text-shadow: 0px 1px 2px black;
+	font-size: 25px;
+	transition: color 0.2s ease-in-out,
+		background-color 0.2s ease-in-out,
+		padding-top 0.2s ease-in-out,
+		padding-bottom 0.2s ease-in-out;
+}
+@media (max-width: 500px) {
+	#navbar a {
+		font-size: 20px;
+	}
+}
+#navbar a:hover {
+	padding-top: 20px;
+	padding-bottom: 30px;
+	color: rgb(255, 255, 255);
+	background-color: rgba(0, 183, 255, 0.247);
+} */
+
+body {
+	margin: 0px;
+	font-family: "Open Sans";
+	background-image: url(https://i.ytimg.com/vi/Gr0GgcO4kMk/maxresdefault.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+
+/* WELCOME SECTION */
+
+
+#welcome-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	/* border-bottom: 5px solid rgb(50, 107, 100) */
+}
+
+#welcome-section-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	color: white;
+	text-shadow: 1px 1px 3px black;
+	text-align: center;
+	background-color: rgba(50, 107, 100, 0.5);
+	background: linear-gradient(
+		0deg,
+		rgba(50, 107, 100, 0.76),
+		rgba(36, 79, 82, 0.486)
+	);
+	border: 1px solid rgba(50, 107, 100);
+	border-radius: 20px;
+	padding: 20px;
+	box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.712);
+}
+
+#welcome-section-title {
+	font-family: Montserrat;
+	font-weight: lighter;
+	font-size: 40px;
+}
+
+#welcome-section-description, #work-header {
+	font-family: Montserrat;
+}
+
+
+/* WORK SECTION */
+
+
+#work-anchor {
+	position: relative;
+	top: -80px;
+}
+
+#work-header {
+	color: white;
+	text-align: center;
+	text-shadow: 1px 1px 3px black;
+
+}
+
+#work-header h1 {
+	font-family: Montserrat;
+	font-size: 40px;
+}
+
+#projects {
+	background: rgba(0, 0, 0, 0.699);
+	padding: 20px;
+}
+
+#container-tiles {
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fit, 
+		minmax(300px, 
+		1fr));
+	grid-gap: 30px;
+}
+
+.project-tile {
+	text-align: center;
+	padding: 15px;
+	background-color: rgba(50, 107, 100, 0.233);
+	border-radius: 5px;
+	border: 1px solid rgba(50, 107, 100, 0.719);
+	transition: background-color 0.2s ease-in-out,
+	box-shadow 0.2s ease-in-out;
+}
+.project-tile:hover {
+	background-color: rgba(52, 114, 104, 0.521);
+	box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.466);
+}
+
+.project-tile p {
+	font-size: 30px;
+	font-family: Montserrat;
+	color: rgb(150, 211, 170);
+	text-shadow: 0px 1px 2px black;
+	margin: 0;
+	padding-top: 15px;
+	transition: color 0.2s ease-in-out,
+		padding-top 0.2s ease-in-out,
+		padding-bottom 0.2s ease-in-out;
+}
+.project-tile:hover > p {
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.project-tile img {
+	width: 100%;
+	margin-bottom: -5px;
+	border-radius: 5px;
+}
+
+#projects {
+	padding-bottom: 50px;
+	border-top: 5px solid rgb(50, 107, 100);
+	border-bottom: 5px solid rgb(50, 107, 100);
+}
+
+.project-tile a {
+    color: white;
+    font-family: Montserrat;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.project-tile a:hover {
+    color: rgb(150, 211, 170);
+}
+
+#links-header {
+	margin: 70px;
+	margin-bottom: 0px;
+	font-family: Montserrat;
+	font-size: 30px;
+	font-weight: bolder;
+	color: white;
+	text-align: center;
+}
+
+
+/* CONTACT SECTION */
+/* 
+
+
+#links-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.profile-link {
+	text-align: center;
+	width: 50%;
+	text-decoration: none;
+	color: rgb(150, 211, 170);
+	text-shadow: 0px 1px 2px black;
+	font-family: Montserrat;
+	font-size: 25px;
+	font-weight: bolder;
+	padding: 25px 15px 25px 15px;
+	transition: color 0.2s ease-in-out,
+		padding-top 0.2s ease-in-out,
+		padding-bottom 0.2s ease-in-out;
+}
+.profile-link:hover {
+	padding-top: 20px;
+	padding-bottom: 30px;
+	color: rgb(255, 255, 255);
+} */
