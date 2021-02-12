@@ -11,6 +11,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 - create/update an object with a .yaml file: `kubectl apply -f <path/to/yaml>`
 - delete all the objects defined in a .yaml file: `kubectl delete -f <path/to/yaml>`
 - open a terminal in a pod: `kubectl exec -it <full object name> -- bin/bash`
+- check which pods have failed liveness probes: `kubectl describe pods | grep "^Name:\|Liveness probe failed"` (if no "Liveness probe failed" messages follow below the name of an image, it's healthy)
 
 ## Resources
 - General
@@ -84,12 +85,6 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 
 ## STATE OF PROGRESSION
 
-- Make custom replacement for NGINX landing page with links to other services and open it automatically at the end of setup.sh
-- √ Update setup.sh
-	- √ hide some output
-	- √ add some output (with colours)
-	- √ check if all images are present?
-
 - √ Kubernetes web dashboard
 - √ In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.
 - √? All your containers must restart in case of a crash or stop of one of its component parts.
@@ -117,7 +112,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 		- php-fpm (liveness probe)
 		- telegraf (liveness probe)
 
-- NGINX:
+- √ NGINX:
 	- √ Of type LoadBalancer
 	- √ A container with an nginx server listening on ports 80 and 443.
 	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
@@ -127,7 +122,7 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Telegraf
 	- ~~You must be able to access the nginx container by logging into SSH.~~
 
-- MySQL
+- √ MySQL
 	- √ Of type ClusterIP
 	- √ Telegraf
 
@@ -166,25 +161,13 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- √ Telegraf
 	- ??? improve configuration in respect to security?
 	
-- InfluxDB:
+- √ InfluxDB:
 	- √ Of type ClusterIP
-	- √ pod is running
-	- √ InfluxDB running
 	- √ Telegraf
-	- √ configure to work with Grafana
 
-- Grafana:
+- √ Grafana:
 	- √ Of type LoadBalancer
-	- √ pod is running
 	- √ listening on port 3000
-	- √ Grafana is running
 	- √ Telegraf
-	- √ container dashboards:
-		- √ nginx
-		- √ phpmyadmin
-		- √ wordpress
-		- √ mysql
-		- √ ftps
-		- √ influxdb
-		- √ grafana
+	- √ dashboards for each container
 	- √ automated datasource & dashboard creation
