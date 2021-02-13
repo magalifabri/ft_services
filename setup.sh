@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # This script launches a multi-service cluster in minikube.
-# Docker needs to be running, and minikube, kubectl and hyperkit need to be installed.
-# For install instructions, refer to https://www.youtube.com/watch?v=X48VuDVv0do
+# Minikube, kubectl and hyperkit need to be installed.
+# For install instructions, you can refer to https://www.youtube.com/watch?v=X48VuDVv0do
 
 # define colour variables to use with the printf command
 RED="\033[0;31m"

@@ -9,33 +9,35 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 
 ---
 
-It's good to split up your (macro?) services into micro services, because of reasons. So instead of installing your Wordpress, NGINX, phpMyAdmin, MySQL, etc. all in one container, you give them their own seperate containers. This cluster of containers is what Kubernetes helps you manage. 
+It's good to split up your (macro?) service into micro services, because of reasons. So instead of installing your WordPress, NGINX, phpMyAdmin, MySQL, etc. all in one container, you give them their own seperate containers. This cluster of containers is what Kubernetes helps you manage. 
 
-The following services are contained in this cluster:
+The following services are contained in the cluster for this project:
 
 **LEMP Stack (Linux, NGINX, MySQL & phpMyAdmin):**
-- **NGINX** is our web server. It forms the primary front-end of the ft_services operation, receiving traffic requests on the default ports: 80 and 443. It also redirects to the WordPress and phpMyAdmin sites.
+- **NGINX** is our web server. It forms the primary front-end of the ft_services project, receiving traffic requests on the default ports: 80 and 443. It also redirects to the WordPress and phpMyAdmin sites.
 - **MySQL** provides the databases for the WordPress and phpMyAdmin sites.
-- **phpMyAdmin** is a administration tool for the MySQL database. It's hosted on NGINX in it's own container.
-- (The "Linux" of the LEMP stack is in the Alpine Linux that the containers are build from.)
+- **phpMyAdmin** is an administration tool for the MySQL database. It's hosted on NGINX in it's own container.
+- (The "L" part of the LEMP stack is in the Alpine Linux OS that the containers run on.)
 
-**WordPress** is perched on top of the LEMP stack: hosted on NGINX, connected to the MySQL database, and supported by phpMyAdmin. It comes preinstalled, with an admin and two users.
+**WordPress** is perched on top of the LEMP stack: hosted on NGINX, connected to the MySQL database, and supported by phpMyAdmin. It directly installed with an admin and two users.
 
 **TIG Stack (Telegraf, InfluxDB & Grafana):**
-- **Telegraf** is installed in every container and sends metrics on each container to InfluxDB.
+- **Telegraf** is installed in every container in the cluster and sends metrics (usage of CPU, memory and the like) on each container to InfluxDB.
 - **InfluxDB** contains a database for each container in which it stores the data it receives from Telegraf.
 - **Grafana** fetches the data on all our containers from InfluxDB and let's us visualize it in fancy tables, graphs, etc. on a web GUI. 
 
-**FTPS** stands for something like *"File Transfer Protocol - Secure"*. Setting up the FTPS server in our cluster allows you to connect to it from outside the cluster (with e.g. FileZilla) to transfer files to and from the server.
+**FTPS** stands for something like *"File Transfer Protocol - Secure"*. Setting up the FTPS server in our cluster allows us to connect to it from outside the cluster (with e.g. a FileZilla client) to transfer files to and from the server.
 
 ---
 
 ## Instructions
-- to install, run setup.sh
+- to install, run setup.sh (minikube, kubectl and hyperkit need to be installed)
+
+- when the installation has finished, the kubernetes dashboard will automatically open in the browser, informing us on how all the parts of the cluster are doing and providing links to services with a web-hosted front-end
 - to clean up, first run the command `minikube stop` and then `minikube delete`
 
-### A few handy commands to interact with the cluster
-- restart minikube: `minikube start`
+### A few handy commands to interact with the cluster from the CLI
+- start minikube: `minikube start`
 - show all kubernetes objects: `kubectl get all`
 - show all kubernetes objects of one type: `kubectl get <po (pods) / svc (services) / deploy (deployments) / pv(c) (persistent volumes (claims))>`
 - show details on an object: `kubectl describe <object name>`
@@ -43,7 +45,6 @@ The following services are contained in this cluster:
 - delete the objects defined in a .yaml file: `kubectl delete -f <path/to/yaml>`
 - open a terminal in a pod: `kubectl exec -it <full pod name> -- bin/sh`
 	- to more easily switch between different objects without all the copy/pasting, use `kubectl exec -it  $(kubectl get pods | grep ^<first letter of the pod's name>) -- bin/sh`
-- quickly check which pods have failed liveness probes: `kubectl describe pods | grep "^Name:\|Liveness probe failed"` (if no "Liveness probe failed" messages follow below the name of an image, it's healthy)
 
 ---
 
