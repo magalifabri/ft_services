@@ -1,75 +1,61 @@
 # ft_services - WORK IN PROGRESS
 _Project of coding school 19 in Brussels (part of the 42 school network)_
 
+---
+
+## Description
+
+*'Ft_services will introduce you to Kubernetes. You will discover cluster management and deployment with Kubernetes. You will virtualize a network and do "clustering".'* - en.subject.pdf
+
+---
+
+It's good to split up your (macro?) services into micro services, because of reasons. So instead of installing your Wordpress, NGINX, phpMyAdmin, MySQL, etc. all in one container, you give them their own seperate containers. This cluster of containers is what Kubernetes helps you manage. 
+
+The following services are contained in this cluster:
+
+**LEMP Stack (Linux, NGINX, MySQL & phpMyAdmin):**
+- **NGINX** is our web server. It forms the primary front-end of the ft_services operation, receiving traffic requests on the default ports: 80 and 443. It also redirects to the WordPress and phpMyAdmin sites.
+- **MySQL** provides the databases for the WordPress and phpMyAdmin sites.
+- **phpMyAdmin** is a administration tool for the MySQL database. It's hosted on NGINX in it's own container.
+- (The "Linux" of the LEMP stack is in the Alpine Linux that the containers are build from.)
+
+**WordPress** is perched on top of the LEMP stack: hosted on NGINX, connected to the MySQL database, and supported by phpMyAdmin. It comes preinstalled, with an admin and two users.
+
+**TIG Stack (Telegraf, InfluxDB & Grafana):**
+- **Telegraf** is installed in every container and sends metrics on each container to InfluxDB.
+- **InfluxDB** contains a database for each container in which it stores the data it receives from Telegraf.
+- **Grafana** fetches the data on all our containers from InfluxDB and let's us visualize it in fancy tables, graphs, etc. on a web GUI. 
+
+**FTPS** stands for something like *"File Transfer Protocol - Secure"*. Setting up the FTPS server in our cluster allows you to connect to it from outside the cluster (with e.g. FileZilla) to transfer files to and from the server.
+
+---
+
 ## Instructions
 - to install, run setup.sh
-- to clean up, run `minikube stop` and `minikube delete`
+- to clean up, first run the command `minikube stop` and then `minikube delete`
 
 ### A few handy commands to interact with the cluster
+- restart minikube: `minikube start`
 - show all kubernetes objects: `kubectl get all`
+- show all kubernetes objects of one type: `kubectl get <po (pods) / svc (services) / deploy (deployments) / pv(c) (persistent volumes (claims))>`
 - show details on an object: `kubectl describe <object name>`
-- create/update an object with a .yaml file: `kubectl apply -f <path/to/yaml>`
-- delete all the objects defined in a .yaml file: `kubectl delete -f <path/to/yaml>`
-- open a terminal in a pod: `kubectl exec -it <full object name> -- bin/bash`
-- check which pods have failed liveness probes: `kubectl describe pods | grep "^Name:\|Liveness probe failed"` (if no "Liveness probe failed" messages follow below the name of an image, it's healthy)
+- create/update the objects defined in a .yaml file: `kubectl apply -f <path/to/yaml>`
+- delete the objects defined in a .yaml file: `kubectl delete -f <path/to/yaml>`
+- open a terminal in a pod: `kubectl exec -it <full pod name> -- bin/sh`
+	- to more easily switch between different objects without all the copy/pasting, use `kubectl exec -it  $(kubectl get pods | grep ^<first letter of the pod's name>) -- bin/sh`
+- quickly check which pods have failed liveness probes: `kubectl describe pods | grep "^Name:\|Liveness probe failed"` (if no "Liveness probe failed" messages follow below the name of an image, it's healthy)
+
+---
 
 ## Resources
-- General
-	- **[Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]](https://www.youtube.com/watch?v=X48VuDVv0do) (watch & coding along until and including the Mongo demo project, to get started)**
-	- [How to Run Locally Built Docker Images in Kubernetes](https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d)
-	- [Accessing apps: How to access applications running within minikube # Using minikube tunnel](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel) (for use during development, before MetalLB has been set up to take on this job)
-	- [Troubleshooting: Minikube is slow and unresponsive](https://stackoverflow.com/questions/56327843/minikube-is-slow-and-unresponsive)
 
-- MetalLB
-	- **[MetalLB Configuration in Minikube — To enable Kubernetes service of type “LoadBalancer”](https://medium.com/faun/metallb-configuration-in-minikube-to-enable-kubernetes-service-of-type-loadbalancer-9559739787df)**
-	- [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
-	- [metallb.universe.tf: Installation](https://metallb.universe.tf/installation/)
-	- [metallb.universe.tf: Configuration](https://metallb.universe.tf/configuration/)
-	- [IP Address Sharing](https://metallb.universe.tf/usage/#ip-address-sharing) (colocate services on a single IP)
+(Very usefull resources in bold.)
 
-- MySQL
-	- [MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
-	- [Troubleshooting: [HELP] Created a container from alpine, installed MariaDB. MariaDB won't start.](https://www.reddit.com/r/docker/comments/3ucc8y/help_created_a_container_from_alpine_installed/)
-	- [Troubleshooting: Could not open mysql.plugin table. Some plugins may be not loaded](https://stackoverflow.com/questions/34198735/could-not-open-mysql-plugin-table-some-plugins-may-be-not-loaded)
-
-- WordPress
-	- [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/#set-database-host)
-	- [Debugging in WordPress](https://wordpress.org/support/article/debugging-in-wordpress/)
-	- [Troubleshooting: NGINX downloads the index.php file](https://stackoverflow.com/questions/25591040/nginx-serves-php-files-as-downloads-instead-of-executing-them)
-	- [Troubleshooting: Bad Gateway](https://medium.com/@armno/til-fixing-http-502-bad-gateway-error-nginx-wordpress-a591be919adf)
-
-- phpMyAdmin
-	- [Configuration](https://docs.phpmyadmin.net/en/latest/config.html)
-	- [Troubleshooting: error mysqli::real_connect(): (HY000/2002): No such file or directory](https://stackoverflow.com/questions/29928109/getting-error-mysqlireal-connect-hy000-2002-no-such-file-or-directory-wh)
-
-- NGINX
-	- [Redirect HTTP to HTTPS in Nginx](https://linuxize.com/post/redirect-http-to-https-in-nginx/#:~:text=The%20preferred%20method%20to%20redirect,unpredictable%20behavior%20of%20the%20server.)
-	- [Creating NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
-	- [Beginner’s Guide](http://nginx.org/en/docs/beginners_guide.html)
-	- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
-
-- FTPS
-	- [How to install and configure VSFTPD](https://www.howtoforge.com/tutorial/how-to-install-and-configure-vsftpd/)
-	- [VSFTPD.CONF](http://vsftpd.beasts.org/vsftpd_conf.html)
-	- [Troubleshooting: "500 OOPS: priv_sock_get_cmd"](https://www.liquidweb.com/kb/error-500-oops-priv_sock_get_cmd-on-fedora-20-solved/)
-	- [Troubleshooting: "Failed to retrieve directory listing"](https://serverfault.com/questions/555541/failed-to-retrieve-directory-listing-in-filezilla-connecting-to-vsftpd)
-	- [Troubleshooting: Illegal PORT command](https://askubuntu.com/questions/358603/vsftpd-illegal-port-command)
-	- [Configure VSFTPD with an SSL](https://www.liquidweb.com/kb/configure-vsftpd-ssl/)
-	- [HOW TO : FTPS SERVER CONFIGURATION IN LINUX](https://www.linuxnix.com/ftps-server-configuration/)
-	- [change root password using bash script](https://stackoverflow.com/questions/52211476/change-root-password-using-bash-script)
-
-- Grafana
-	- **& InfluxDB & Telegraf: [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)**
-	- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/) (provisioning = providing premade dashboards and data sources)
-	- [Provision dashboards and data sources](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#1)
-	- [Provisioning Grafana Datasources and Dashboards Automagically](https://blog.56k.cloud/provisioning-grafana-datasources-and-dashboards-automagically/)
-	- [Troubleshooting: Plugin not found, no installed plugin with that id](https://community.grafana.com/t/plugin-not-found-no-installed-plugin-with-that-id/26646)
-
-- InfluxDB
-	- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/) (viewing data in the database)
-
-- Telegraf
-	- [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
+### Kubernetes & minikube
+- **[Kubernetes Tutorial for Beginners [FULL COURSE in 4 Hours]](https://www.youtube.com/watch?v=X48VuDVv0do) (watch & code along until and including the Mongo demo project, to get started)**
+- [How to Run Locally Built Docker Images in Kubernetes](https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d)
+- [Accessing apps: How to access applications running within minikube # Using minikube tunnel](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel) (for use during development, before MetalLB has been set up to take on this job)
+- [Troubleshooting: Minikube is slow and unresponsive](https://stackoverflow.com/questions/56327843/minikube-is-slow-and-unresponsive)
 
 - Persistent Volumes
 	- [Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
@@ -80,94 +66,55 @@ _Project of coding school 19 in Brussels (part of the 42 school network)_
 	- [Multiple liveness probes in kuberenetes](https://stackoverflow.com/questions/49172671/multiple-liveness-probes-in-kuberenetes)
 	- [Bash check if process is running or not on Linux / Unix](https://www.cyberciti.biz/faq/bash-check-if-process-is-running-or-notonlinuxunix/)
 
-- Docker
-	- [Docker Tip #18: Please Pin Your Docker Image Versions](https://nickjanetakis.com/blog/docker-tip-18-please-pin-your-docker-image-versions)
+### MetalLB
+- **[MetalLB Configuration in Minikube — To enable Kubernetes service of type “LoadBalancer”](https://medium.com/faun/metallb-configuration-in-minikube-to-enable-kubernetes-service-of-type-loadbalancer-9559739787df)**
+- [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
+- [metallb.universe.tf: Installation](https://metallb.universe.tf/installation/)
+- [metallb.universe.tf: Configuration](https://metallb.universe.tf/configuration/)
+- [IP Address Sharing](https://metallb.universe.tf/usage/#ip-address-sharing) (colocate services on a single IP)
 
-## STATE OF PROGRESSION
+### MySQL
+- [MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
+- [Troubleshooting: [HELP] Created a container from alpine, installed MariaDB. MariaDB won't start.](https://www.reddit.com/r/docker/comments/3ucc8y/help_created_a_container_from_alpine_installed/)
+- [Troubleshooting: Could not open mysql.plugin table. Some plugins may be not loaded](https://stackoverflow.com/questions/34198735/could-not-open-mysql-plugin-table-some-plugins-may-be-not-loaded)
 
-- √ Kubernetes web dashboard
-- √ In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.
-- √? All your containers must restart in case of a crash or stop of one of its component parts.
-	- FTPS:
-		- vsftpd (foreground process)
-		- telegraf (liveness probe)
-	- Grafana:
-		- grafana (foreground process)
-		- telegraf (liveness probe)
-	- InfluxDB:
-		- telegraf (foreground process)
-		- influxd (liveness probe)
-	- MySQL:
-		- telegraf (foreground process)
-		- mysqld (liveness probe)
-	- NGINX:
-		- nginx (foreground process)
-		- telegraf (liveness probe)
-	- phpMyAdmin:
-		- nginx (foreground process)
-		- php-fpm (liveness probe)
-		- telegraf (liveness probe)
-	- WordPress:
-		- nginx (foreground process)
-		- php-fpm (liveness probe)
-		- telegraf (liveness probe)
+### WordPress
+- [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/#set-database-host)
+- [Debugging in WordPress](https://wordpress.org/support/article/debugging-in-wordpress/)
+- [Troubleshooting: NGINX downloads the index.php file](https://stackoverflow.com/questions/25591040/nginx-serves-php-files-as-downloads-instead-of-executing-them)
+- [Troubleshooting: Bad Gateway](https://medium.com/@armno/til-fixing-http-502-bad-gateway-error-nginx-wordpress-a591be919adf)
 
-- √ NGINX:
-	- √ Of type LoadBalancer
-	- √ A container with an nginx server listening on ports 80 and 443.
-	- √ Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
-	- √ The page displayed does not matter as long as it is not an http error.
-	- √ This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
-	- √ It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
-	- √ Telegraf
-	- ~~You must be able to access the nginx container by logging into SSH.~~
+### phpMyAdmin
+- [Configuration](https://docs.phpmyadmin.net/en/latest/config.html)
+- [Troubleshooting: error mysqli::real_connect(): (HY000/2002): No such file or directory](https://stackoverflow.com/questions/29928109/getting-error-mysqlireal-connect-hy000-2002-no-such-file-or-directory-wh)
 
-- √ MySQL
-	- √ Of type ClusterIP
-	- √ Telegraf
+### NGINX
+- [Redirect HTTP to HTTPS in Nginx](https://linuxize.com/post/redirect-http-to-https-in-nginx/#:~:text=The%20preferred%20method%20to%20redirect,unpredictable%20behavior%20of%20the%20server.)
+- [Creating NGINX Rewrite Rules](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
+- [Beginner’s Guide](http://nginx.org/en/docs/beginners_guide.html)
+- [NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
-- Wordpress:
-	- √ Of type LoadBalancer
-	- √ listening on port 5050
-	- √ work with a MySQL database
-	- √ Both services (wordpress & mysql) have to run in separate containers)
-	- √ The WordPress website will have several users and an administrator
-		- admin: R)kUxc1Kc%e2yEwRF5
-		- user1: yXIw2ceh9z%)5)lu(SYKAK^a
-		- user2: &xotFcVWxJJE109@j25h8di7
-	- √ Wordpress needs its own nginx server
-		- ? ssl?
-	- √ The Load Balancer should be able to redirect directly to this service.
-	- √ Telegraf
+### FTPS
+- [How to install and configure VSFTPD](https://www.howtoforge.com/tutorial/how-to-install-and-configure-vsftpd/)
+- [VSFTPD.CONF](http://vsftpd.beasts.org/vsftpd_conf.html)
+- [Troubleshooting: "500 OOPS: priv_sock_get_cmd"](https://www.liquidweb.com/kb/error-500-oops-priv_sock_get_cmd-on-fedora-20-solved/)
+- [Troubleshooting: "Failed to retrieve directory listing"](https://serverfault.com/questions/555541/failed-to-retrieve-directory-listing-in-filezilla-connecting-to-vsftpd)
+- [Troubleshooting: Illegal PORT command](https://askubuntu.com/questions/358603/vsftpd-illegal-port-command)
+- [Configure VSFTPD with an SSL](https://www.liquidweb.com/kb/configure-vsftpd-ssl/)
+- [change root password using bash script](https://stackoverflow.com/questions/52211476/change-root-password-using-bash-script)
 
-- phpMyAdmin:
-	- √ Of type LoadBalancer
-	- √ listening on port 5000
-	- √ linked with the MySQL database
-	- √ its own nginx server
-		- ? ssl?
-	- √ The Load Balancer should be able to redirect directly to this service.
-	- √ Telegraf
+### Grafana
+- **& InfluxDB & Telegraf: [How to Install TIG Stack (Telegraf, InfluxDB, and Grafana) on Ubuntu 18.04 LTS](https://www.howtoforge.com/tutorial/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-1804/)**
+- [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/) (provisioning = providing premade dashboards and data sources)
+- [Provision dashboards and data sources](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#1)
+- [Provisioning Grafana Datasources and Dashboards Automagically](https://blog.56k.cloud/provisioning-grafana-datasources-and-dashboards-automagically/)
+- [Troubleshooting: Plugin not found, no installed plugin with that id](https://community.grafana.com/t/plugin-not-found-no-installed-plugin-with-that-id/26646)
 
-- MetalLB (load balancer):
-	- √? The Load Balancer which manages the external access of your services. It will be the only entry point to your cluster.
-	- √ (so far) You must keep the ports associated with the service (IP:3000 for Grafana etc).
-	- √ Load Balancer will have a single ip
+### InfluxDB
+- [Getting to know InfluxDB](https://oznetnerd.com/2017/06/11/getting-know-influxdb/) (viewing data in the database)
 
-- FTPS:
-	- √ Of type LoadBalancer
-	- √ ssl
-	- √ can log in with FileZilla (un: root & pw: pass)
-	- √ Telegraf
-	- ??? improve configuration in respect to security?
-	
-- √ InfluxDB:
-	- √ Of type ClusterIP
-	- √ Telegraf
+### Telegraf
+- [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
 
-- √ Grafana:
-	- √ Of type LoadBalancer
-	- √ listening on port 3000
-	- √ Telegraf
-	- √ dashboards for each container
-	- √ automated datasource & dashboard creation
+### Docker
+- [Docker Tip #18: Please Pin Your Docker Image Versions](https://nickjanetakis.com/blog/docker-tip-18-please-pin-your-docker-image-versions)
