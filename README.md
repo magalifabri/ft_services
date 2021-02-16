@@ -84,10 +84,12 @@ The following services are contained in the cluster for this project:
 - [Debugging in WordPress](https://wordpress.org/support/article/debugging-in-wordpress/)
 - [Troubleshooting: NGINX downloads the index.php file](https://stackoverflow.com/questions/25591040/nginx-serves-php-files-as-downloads-instead-of-executing-them)
 - [Troubleshooting: Bad Gateway](https://medium.com/@armno/til-fixing-http-502-bad-gateway-error-nginx-wordpress-a591be919adf)
+- [Troubleshooting: Publishing failed. You are probably offline.](https://wordpress.org/support/topic/publishing-failed-you-are-probably-offline/) (change the URL in Settings on WordPress)
 
 ### phpMyAdmin
 - [Configuration](https://docs.phpmyadmin.net/en/latest/config.html)
 - [Troubleshooting: error mysqli::real_connect(): (HY000/2002): No such file or directory](https://stackoverflow.com/questions/29928109/getting-error-mysqlireal-connect-hy000-2002-no-such-file-or-directory-wh)
+- [Troubleshooting: Prevent Nginx to remove port number](https://serverfault.com/questions/542202/prevent-nginx-to-remove-port-number)
 
 ### NGINX
 - [Redirect HTTP to HTTPS in Nginx](https://linuxize.com/post/redirect-http-to-https-in-nginx/#:~:text=The%20preferred%20method%20to%20redirect,unpredictable%20behavior%20of%20the%20server.)
