@@ -36,6 +36,15 @@ The following services are contained in the cluster for this project:
 - when the installation has finished, the kubernetes dashboard will automatically open in the browser, informing us on how all the parts of the cluster are doing and providing links to services with a web-hosted front-end
 - to clean up, first run the command `minikube stop` and then `minikube delete`
 
+### Login Credentials
+- WordPress:
+	- admin / R)kUxc1Kc%e2yEwRF5
+	- user1 / yXIw2ceh9z%)5)lu(SYKAK^a
+	- user2 / &xotFcVWxJJE109@j25h8di7
+- PhpMyAdmin: user / pass
+- Grafana: admin / admin
+- FTPS: root / pass
+
 ### A few handy commands to interact with the cluster from the CLI
 - start minikube: `minikube start`
 - show all kubernetes objects: `kubectl get all`
@@ -118,6 +127,3 @@ The following services are contained in the cluster for this project:
 
 ### Telegraf
 - [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
-
-### Docker
-- [Docker Tip #18: Please Pin Your Docker Image Versions](https://nickjanetakis.com/blog/docker-tip-18-please-pin-your-docker-image-versions)
