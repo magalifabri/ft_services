@@ -2,7 +2,7 @@ FROM alpine:3.13.1
 
 RUN apk update && apk add \
     nginx=1.18.0-r13 \
-    openssl=1.1.1i-r0 \
+    openssl=1.1.1j-r0 \
     vim \
     telegraf=1.17.0-r0
 

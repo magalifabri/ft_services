@@ -2,7 +2,7 @@ FROM alpine:3.13.1
 
 RUN apk update && apk add \
     vsftpd=3.0.3-r6 \
-    openssl=1.1.1i-r0 \
+    openssl=1.1.1j-r0 \
     vim \
     telegraf=1.17.0-r0
 

@@ -9,7 +9,7 @@ RUN apk update && apk add \
     php7-json=7.4.15-r0 \
     php7-session=7.4.15-r0 \
     telegraf=1.17.0-r0 \
-    openssl=1.1.1i-r0 \
+    openssl=1.1.1j-r0 \
     nginx=1.18.0-r13
 
 RUN mkdir -p /var/www/html/wp \
