@@ -1,4 +1,4 @@
-# ft_services - WORK IN PROGRESS
+# ft_services
 _Project of coding school 19 in Brussels (part of the 42 school network)_
 
 ---
